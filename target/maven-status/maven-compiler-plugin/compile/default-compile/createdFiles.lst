@@ -1,0 +1,16 @@
+com\maiquan\aladdin_receadd\mapper\ReceiveAddressMapper.class
+com\maiquan\aladdin_receadd\service\IAddressService.class
+com\maiquan\aladdin_receadd\domain\Address.class
+com\maiquan\aladdin_receadd\domain\CommonParam.class
+com\maiquan\aladdin_receadd\service\impl\ManageReceAddServiceImpl.class
+com\maiquan\aladdin_receadd\dao\impl\AddressDaoImpl.class
+com\maiquan\aladdin_receadd\mapper\AddressMapper.class
+com\maiquan\aladdin_receadd\service\IManageReceAddService.class
+com\maiquan\aladdin_receadd\service\IManageReceAddRestService.class
+com\maiquan\aladdin_receadd\service\impl\AddressServiceImpl.class
+com\maiquan\aladdin_receadd\domain\ReceiveAddress.class
+com\maiquan\aladdin_receadd\service\impl\ManageReceAddRestServiceImpl.class
+com\maiquan\aladdin_receadd\Start.class
+com\maiquan\aladdin_receadd\util\ObjectToJSONSerializer.class
+com\maiquan\aladdin_receadd\domain\App.class
+com\maiquan\aladdin_receadd\dao\IAddressDao.class
