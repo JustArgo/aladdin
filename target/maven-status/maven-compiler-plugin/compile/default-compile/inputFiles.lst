@@ -1,6 +1,7 @@
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\service\IManageReceAddRestService.java
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\dao\IAddressDao.java
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\domain\Address.java
+C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\util\LogUtil.java
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\mapper\AddressMapper.java
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\dao\impl\AddressDaoImpl.java
 C:\Users\hsf\workspace\aladdin_receadd\src\main\java\com\maiquan\aladdin_receadd\domain\ReceiveAddress.java

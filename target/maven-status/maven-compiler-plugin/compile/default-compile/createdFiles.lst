@@ -4,6 +4,7 @@ com\maiquan\aladdin_receadd\domain\Address.class
 com\maiquan\aladdin_receadd\domain\CommonParam.class
 com\maiquan\aladdin_receadd\service\impl\ManageReceAddServiceImpl.class
 com\maiquan\aladdin_receadd\dao\impl\AddressDaoImpl.class
+com\maiquan\aladdin_receadd\util\LogUtil.class
 com\maiquan\aladdin_receadd\mapper\AddressMapper.class
 com\maiquan\aladdin_receadd\service\IManageReceAddService.class
 com\maiquan\aladdin_receadd\service\IManageReceAddRestService.class
