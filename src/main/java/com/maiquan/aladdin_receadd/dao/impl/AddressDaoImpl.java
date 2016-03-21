@@ -73,24 +73,27 @@ public class AddressDaoImpl implements IAddressDao{
 	@Override
 	public void addAddress(Address address) {
 
-		GenericToStringSerializer<Address> serializer = new GenericToStringSerializer<Address>(Address.class);
-		redisTemplate.setValueSerializer(serializer);
-		
-		HashOperations<String,String,String> operation = redisTemplate.opsForHash();
-		
-		operation.put("address:"+address.getId(),"name",address.getName());
-		operation.put("address:"+address.getId(),"level",address.getLevel()+"");
-		operation.put("address:"+address.getId(),"pid",address.getPid()+"");
+		if(address!=null){
+			GenericToStringSerializer<Address> serializer = new GenericToStringSerializer<Address>(Address.class);
+			redisTemplate.setValueSerializer(serializer);
+			
+			HashOperations<String,String,String> operation = redisTemplate.opsForHash();
+			
+			operation.put("address:"+address.getId(),"name",address.getName());
+			operation.put("address:"+address.getId(),"level",address.getLevel()+"");
+			operation.put("address:"+address.getId(),"pid",address.getPid()+"");
+		}
 		
 	}
 
 	@Override
 	public void addSubAddress(List<Address> addresses) {
-
-		redisTemplate.setValueSerializer(new ObjectToJSONSerializer<Address>());
-		ZSetOperations<String,Address> operation = redisTemplate.opsForZSet();
-		for(int i=0;i<addresses.size();i++){
-			operation.add("pid:"+addresses.get(0).getPid(), addresses.get(i), addresses.get(i).getId());
+		if(addresses!=null){
+			redisTemplate.setValueSerializer(new ObjectToJSONSerializer<Address>());
+			ZSetOperations<String,Address> operation = redisTemplate.opsForZSet();
+			for(int i=0;i<addresses.size();i++){
+				operation.add("pid:"+addresses.get(0).getPid(), addresses.get(i), addresses.get(i).getId());
+			}
 		}
 	}
 	

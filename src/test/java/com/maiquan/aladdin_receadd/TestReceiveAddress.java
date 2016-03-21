@@ -32,10 +32,10 @@ public class TestReceiveAddress {
 		ReceiveAddress address = new ReceiveAddress();
 		address.setID(33);
 		address.setMqID("3535");
-		address.setCountryID("1");
-		address.setProvinceID("88");
-		address.setCityID("8810");
-		address.setDistrictID("881010");
+		address.setCountryID(1);
+		address.setProvinceID(88);
+		address.setCityID(8810);
+		address.setDistrictID(881010);
 		address.setAddress("翔安街道");
 		address.setIsDefault("NOR");
 		address.setRecName("樱木花道");
@@ -125,9 +125,9 @@ public class TestReceiveAddress {
 	public void testGetFullAddress(){
 		
 		ReceiveAddress receiveAddress = new ReceiveAddress();
-		receiveAddress.setCountryID("08");
-		receiveAddress.setProvinceID("10");
-		receiveAddress.setCityID("1010");
+		receiveAddress.setCountryID(8);
+		receiveAddress.setProvinceID(10);
+		receiveAddress.setCityID(1010);
 		receiveAddress.setAddress("老胡同");
 		String fullAddress = manageReceAddService.getFullAddress(receiveAddress, UUID.randomUUID().toString());
 		System.out.println(fullAddress);

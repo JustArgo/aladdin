@@ -34,13 +34,13 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 		try{
 			
 			receiveAddress.setID(userAddressID);
-			receiveAddress.setMqID("154");
+			receiveAddress.setMqID("2");
 			receiveAddress.setCreateTime(new Date());
 			System.out.println("isDefault:----------------"+receiveAddress.getIsDefault());
 			if(receiveAddress.getIsDefault()!=null && receiveAddress.getIsDefault().equals("DEF")){
 				/* 找出原来设置的默认收货地址 并设置为非默认 如果找出来的地址和当前要设置的是同一个地址则不做任何操作 */
 
-				ReceiveAddress defaultAddress = this.getDefaultAddress("154",UUID.randomUUID().toString());
+				ReceiveAddress defaultAddress = this.getDefaultAddress("2",UUID.randomUUID().toString());
 				System.out.println(defaultAddress);
 				if(defaultAddress!=null && defaultAddress.getID()!=userAddressID){
 					System.out.println("---------------设置nor");
@@ -48,7 +48,7 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 					receiveAddressMapper.updateByPrimaryKeySelective(defaultAddress);
 				}
 			}
-			receiveAddress.setStatus("OK");
+			receiveAddress.setStatus("OK#");
 			
 			receiveAddressMapper.insert(receiveAddress);
 			
@@ -71,7 +71,7 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 			receiveAddress.setUpdateTime(new Date());
 			if(receiveAddress.getIsDefault()!=null && receiveAddress.getIsDefault().equals("DEF")){
 				/* 找出原来设置的默认收货地址 并设置为非默认 如果找出来的地址和当前要设置的是同一个地址则不做任何操作 */
-				ReceiveAddress defaultAddress = this.getDefaultAddress("154",UUID.randomUUID().toString());
+				ReceiveAddress defaultAddress = this.getDefaultAddress("2",UUID.randomUUID().toString());
 				if(defaultAddress!=null && defaultAddress.getID()!=receiveAddress.getID()){
 					defaultAddress.setIsDefault("NOR");
 					receiveAddressMapper.updateByPrimaryKeySelective(defaultAddress);
@@ -147,6 +147,7 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 		ReceiveAddress address = new ReceiveAddress();
 		address.setIsDefault("DEF");
 		address.setMqID(mqID);
+		address.setStatus("OK#");
 		List<ReceiveAddress> defaultAddress = receiveAddressMapper.selectByCondition(address);
 
 		address = null;
@@ -167,7 +168,8 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 		LogUtil.logInput("收货地址管理微服务", "listUsableAddress", requestID, mqID);
 		
 		ReceiveAddress address = new ReceiveAddress();
-		address.setStatus("OK");
+		address.setMqID(mqID);
+		address.setStatus("OK#");
 		
 		List<ReceiveAddress> adds = receiveAddressMapper.selectByCondition(address);
 		
@@ -191,7 +193,7 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 			
 			if(isDefault.equals("DEF")){
 				/* 找出原来设置的默认收货地址 并设置为非默认 如果找出来的地址和当前要设置的是同一个地址则不做任何操作 */
-				ReceiveAddress defaultAddress = this.getDefaultAddress("mqid",UUID.randomUUID().toString());
+				ReceiveAddress defaultAddress = this.getDefaultAddress("2",UUID.randomUUID().toString());
 				if(defaultAddress!=null && defaultAddress.getID()!=id){
 					defaultAddress.setIsDefault("NOR");
 					receiveAddressMapper.updateByPrimaryKeySelective(defaultAddress);
@@ -220,13 +222,13 @@ public class ManageReceAddServiceImpl implements IManageReceAddService{
 		Address district = null;
 		
 		if(receiveAddress.getProvinceID()!=null){
-			province = addressMapper.selectByPrimaryKey(Integer.valueOf(receiveAddress.getProvinceID()));
+			province = addressMapper.selectByPrimaryKey(receiveAddress.getProvinceID());
 		}
 		if(receiveAddress.getCityID()!=null){
-			city = addressMapper.selectByPrimaryKey(Integer.valueOf(receiveAddress.getCityID()));
+			city = addressMapper.selectByPrimaryKey(receiveAddress.getCityID());
 		}
 		if(receiveAddress.getDistrictID()!=null){
-			district = addressMapper.selectByPrimaryKey(Integer.valueOf(receiveAddress.getDistrictID()));
+			district = addressMapper.selectByPrimaryKey(receiveAddress.getDistrictID());
 		}
 		
 		String fullAddress = "";
